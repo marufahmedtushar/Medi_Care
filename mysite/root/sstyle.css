@@ -1,0 +1,234 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu&display=swap');
+
+
+body{
+	padding: 0%;
+	margin: 0%;
+	font-family: 'Lato' 
+}
+
+.navbar-brand{
+	font-family: 'Pacifico';
+	font-size: 35px;
+	color: lightcoral !important;
+}
+
+.nav-link{
+	font-size: 16px;
+	margin:15px;
+	color: black !important;
+	font-family: 'Roboto Condensed';
+}
+
+.nav-link:hover{
+	color: #ea728c !important;
+}
+
+.active .nav-link{
+	color: #ea728c !important;
+}
+
+.menu-right-btn{
+	border-radius: 50px;
+	margin-right: 4%;
+	background-color:transparent;
+	transition: all 300ms ease-in;
+
+}
+
+
+.menu-right-btn:hover{
+	color: white;
+	background-color:#00e8e8; 
+}
+
+.site-content{
+	background-image: url('img/s7.jpg');
+	background-attachment: fixed;
+	background-size:cover;   
+}
+
+
+.site-title,.site-desc{
+	color: white;
+	font-family: 'Righteous'
+}
+
+.site-title{
+	margin-top: 30%;
+	margin-bottom:6%;
+	font-size:50px;
+	margin-left: 14%;
+}
+
+.site-desc{
+	font-size: 14px;
+	padding-left: 15%;
+}
+
+.site-btn1{
+	margin-left: 20%;
+	background-color: black;
+	color: white;
+}
+
+.site-btn2{
+	background-color: white;
+}
+
+.site-btn1,.site-btn2{
+	margin-top: 5%;
+	margin-bottom: 40%;
+}
+
+/*section-1*/
+.section1 .heading1{
+	border-bottom: 3px solid #ea728c;
+
+	
+}
+
+
+
+.section1 .para-1{
+	width: 60%;
+	margin-left: 20%;
+	margin-bottom: 5%;
+}
+
+.section1 .card-text.para-1{
+	color: rgba(0,0,0,0.59);
+}
+
+
+.section1{
+	margin-bottom: 6%;
+    margin-top: 6%;
+}
+
+
+.card{
+	width: 20rem;
+}
+
+/*section-2*/
+
+
+.section2 .heading1{
+	margin-top: 20%;
+	margin-bottom: 4%;
+	font-family: 'Righteous';
+	width:80%;
+	color: whitesmoke;
+}
+
+.section2 .para{
+	width: 80%;
+	font-family:'Ubuntu';
+	color: whitesmoke;
+	margin-bottom:7%; 
+}
+
+.section2 .btn{
+	margin-bottom: 15%;
+	width: 30%;
+	padding: 2%;
+}
+
+
+/*section-3*/
+
+.section3{
+	margin-top: 6%;
+}
+.section3 i{
+	color: #00e8e8;
+}
+.section3 p{
+	color: rgba(0,0,0,0.59);
+}
+
+/*section-4*/
+
+.section4{
+	margin-top: 8%;
+}
+
+.section4 .row .col-md-7,.col-md-5{
+	margin-top: 10%;
+	margin-bottom: 10%;
+}
+
+.section4 a{
+	color: lightseagreen;
+	font-size: 40px;
+	text-decoration: none;
+}
+
+.section4 .para1{
+	color: white;
+	font-family:'Roboto Condensed';
+	margin-top: 7%;
+	font-size: 23px; 
+}
+
+/*footer*/
+.social i{
+	color: #00E8E8;
+	font-size: 20px;
+}
+
+
+.bdr{
+       border: 2px solid #ea728c;
+      margin-left: 68px;
+      margin-right: 68px;
+
+    }
+
+
+
+@media screen and (max-width: 768px;){
+	.section1 .card{
+		width: 14rem;
+
+}
+.section4 .col-md-7 img{
+	width: 350px;
+}
+}
+
+
+@media screen and (max-width: 320px;){
+
+	.site-content .site-title{
+		font-size: 30px;
+		padding-left: 15%;
+	}
+
+	.site-content .site-btn2{
+		display: none;
+	}
+	.site-content .site-btn1{
+		margin-left: 15%;
+	}
+	.section1 .heading1,.section1.heading2{
+		font-size: 25px;
+	}
+
+	.section1 .col-md-4{
+		padding: 5%;
+		margin-left: 8%;
+
+	}
+.section1 .card{
+	width: 15rem;
+}
+.section4 .col-md-5{
+	padding: 0% 15%;
+}
+
+footer input[type="button"]{
+	margin-top: 5%;
+}
+}

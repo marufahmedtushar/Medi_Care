@@ -1,0 +1,130 @@
+{% extends 'basic.html' %}
+{% block title %} MediCare | About {% endblock %}
+
+
+{% block body %}
+{% load static %}
+
+
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light"style="border-bottom:3px solid #ea728c;">
+      <a href="{% url 'index' %}" class="navbar-brand ml-3">Medi<span style="color: #00E8E8;">Care</span></a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle Navigation">
+        <span class="navbar-toggler-icon"></span>
+
+      </button>
+
+      <div class="collapse navbar-collapse"></div>
+
+      <div class="collapse navbar-collapse" id="navbarMenu">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item ">
+            <a href="{% url 'index' %}" class="nav-link">Home</a>
+          </li>
+
+          <li><a class="nav-link  dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Services
+        </a>
+
+        <div class="dropdown-menu navs" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item-drop" href="{% url 'doctor' %}">Doctors Info</a>
+            <div class="dropdown-divider"></div>
+          <a class="dropdown-item-drop" href="{% url 'medicine' %}">Medicine Info</a>
+            <div class="dropdown-divider"></div>
+          <a class="dropdown-item-drop" href="{% url 'p' %}">Upload Prescription</a>
+						<div class="dropdown-divider"></div>
+          <a class="dropdown-item-drop" href="{% url 'donner' %}">Upload Blood Dooners</a>
+						<div class="dropdown-divider"></div>
+          <a class="dropdown-item-drop" href="{% url 'pres_show' %}">Prescriptions</a>
+			<div class="dropdown-divider"></div>
+          <a class="dropdown-item-drop" href="{% url 'donnershow' %}">Blood Dooners</a>
+        </div>
+      </li>
+
+      <li class="nav-item active">
+            <a href="{% url 'about' %}" class="nav-link js-scroll">About</a>
+          </li>
+
+      <li class="nav-item ">
+            <a href="{% url 'contact' %}" class="nav-link js-scroll">Contact us</a>
+          </li>
+        </ul>
+       {% if user.is_authenticated %}
+
+                <form  action="" method="" class="form-inline my-2 my-lg-0">
+					<button class="btn menu-right-btn border" type="submit">
+						{{request.user}}
+					</button>
+				</form>
+                {% else %}
+                <form  action="/loginuser/" method="get" class="form-inline my-2 my-lg-0">
+					<button class="btn menu-right-btn border" type="submit">
+						Log in
+					</button>
+				</form>
+                {% endif %}
+
+
+      </div>
+
+    </nav>
+  </header>
+
+
+
+<section id="home">
+    	<div class="container-fluid p-0">
+    		<div class="site-content">
+    			<div class="d-flex justify-content">
+    			   <div class="d-flex flex-column">
+    				<h1 class="site-title"style="margin-top: 60%;"></h1>
+                       <h1 class="title-style" >MediCare</h1>
+    				<p class="site-desc"style="color:#ffffff;font-size:20px;">A perfect medical information storing site for you.</p>
+
+
+    				{% if user.is_authenticated %}
+					   <form  action="/logoutuser/" method="get" class="form">
+    				<div class="d-flex flex-row">
+						<button type="submit"  class="btn site-btn1 px-4 py-3 mr-4 btn-dark">Log out</button>
+						<input type="button" value="{{request.user}}" class="btn site-btn2 px-4 py-3 mr-4 btn-light">
+    				</div>
+					   </form>
+					   {% else %}
+					   <form  action="/loginuser/" method="get" class="form">
+    				<div class="d-flex flex-row">
+						<button type="button" value="Buy Templates" class="btn site-btn1 px-4 py-3 mr-4 btn-dark">Log in</button>
+    				</div>
+					   </form>
+					   {% endif %}
+    			  </div>
+    			</div>
+    		</div>
+    	</div>
+    </section>
+
+
+<div class="section-5 text-center " style="margin-left: -33px;margin-right: -35px;">
+      <h4 class="my-3" style="font-size:35px;">About Us</h4>
+      <div class="bdr"></div>
+   </div>
+
+<div class="container1 text-center">
+
+        <article id="main-col" style="width: 100%;">
+
+                               <ul id="services"style="margin-top: 15px;">
+            <li style="height: 500px;border:2px solid #00E8E8;">
+
+<div>
+    Our Main Consern Is To Provide You An Environment For Storing Medical Information Of Yours.Where You Can Easily Store Your Prescriptions And Blood Donner's
+    List.You Will Also Get Some Other Service Like Doctor's Inforation etc...
+
+</div>
+            </li>
+                               </ul>
+        </article>
+</div>
+
+
+{% endblock %}

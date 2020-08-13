@@ -1,0 +1,137 @@
+{% extends 'basic.html' %}
+{% block title %} MediCare | Show_Prescription {% endblock %}
+
+{% block body %}
+{% load static %}
+
+
+<header>
+		<nav class="navbar navbar-expand-lg navbar-light"style="border-bottom:3px solid #ea728c;">
+			<a href="{% url 'index' %}" class="navbar-brand ml-3">Medi<span style="color: #00E8E8;">Care</span></a>
+
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle Navigation">
+				<span class="navbar-toggler-icon"></span>
+
+			</button>
+
+			<div class="collapse navbar-collapse"></div>
+
+			<div class="collapse navbar-collapse" id="navbarMenu">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item ">
+						<a href="{% url 'index' %}" class="nav-link">Home</a>
+					</li>
+
+
+
+          <li><a class="nav-link  dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Services
+        </a>
+
+        <div class="dropdown-menu navs" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item-drop" href="{% url 'doctor' %}">Doctors Info</a>
+            <div class="dropdown-divider"></div>
+          <a class="dropdown-item-drop" href="{% url 'medicine' %}">Medicine Info</a>
+			<div class="dropdown-divider"></div>
+          <a class="dropdown-item-drop" href="{% url 'p' %}">Upload Prescription</a>
+						<div class="dropdown-divider"></div>
+          <a class="dropdown-item-drop" href="{% url 'donner' %}">Upload Blood Dooners</a>
+						<div class="dropdown-divider"></div>
+          <a class="dropdown-item-drop" href="{% url 'pres_show' %}">Prescriptions</a>
+			<div class="dropdown-divider"></div>
+          <a class="dropdown-item-drop" href="{% url 'donnershow' %}">Blood Dooners</a>
+        </div>
+      </li>
+
+      <li class="nav-item ">
+            <a href="{% url 'about' %}" class="nav-link js-scroll">About</a>
+          </li>
+
+      <li class="nav-item ">
+            <a href="{% url 'contact' %}" class="nav-link js-scroll">Contact us</a>
+          </li>
+				</ul>
+               {% if user.is_authenticated %}
+
+				<form  action="" method="" class="form-inline my-2 my-lg-0">
+					<button class="btn menu-right-btn border" type="submit">
+						{{request.user}}
+					</button>
+				</form>
+                {% else %}
+                <form  action="/loginuser/" method="get" class="form-inline my-2 my-lg-0">
+					<button class="btn menu-right-btn border" type="submit">
+						Log in
+					</button>
+				</form>
+                {% endif %}
+
+
+
+			</div>
+
+		</nav>
+	</header>
+
+
+
+                  <div class=" login">
+                       {% if user.is_authenticated %}
+					   <form  action="/logoutuser/" method="get" class="form">
+    				<div class="d-flex flex-row" >
+						<button type="submit"  class="btn site-btn1 btn-style btn-dark" style="margin-left:20%;">Log out</button>
+						<input type="button" value="{{request.user}}" class="btn site-btn2 btn-style btn-light">
+    				</div>
+					   </form>
+					   {% else %}
+					   <form  action="/loginuser/" method="get" class="form">
+    				<div class="d-flex flex-row">
+						<button type="button" value="Buy Templates" class="btn site-btn1 px-4 py-3 mr-4 btn-dark">Log in</button>
+    				</div>
+					   </form>
+					   {% endif %}
+  </div>
+
+                                  <div class="section-5 text-center "  style="margin-left:-32px;margin-right:-35px;">
+      <h4 class="my-5" style="font-size:35px;">Your Prescriptions</h4>
+      <div class="bdr"></div>
+   </div>
+                   {% for Prescription_pictures in pic %}
+                        <div class="container1 text-center">
+
+        <article id="main-col" style="width: 100%;">
+
+                               <ul id="services"style="margin-top: 15px;">
+            <li>
+
+
+             <div style="border:2px solid #00E8E8;">
+
+                      <img src='/media/{{Prescription_pictures.cover}}' class="card-img-top prescription" alt="..."><br>
+				<form method="post" action="{% url 'delete_pres' Prescription_pictures.pk %}" class="btns" >
+					{% csrf_token %}
+
+                      <a href="{{Prescription_pictures.cover.url}}" class="btn1 btn-primary text-white " target="_blank"  id="resize2">View</a><br><br>
+					<div >Uploaded on:{{ Prescription_pictures.date }}</div>
+                      <button type="submit" class="btn1 btn-primary text-white " id="resize">Delete</button>
+
+
+				</form>
+			 </div>
+
+
+
+
+
+
+			</li>
+							   </ul>
+
+		</article>
+						</div>
+             {% endfor %}
+
+
+
+
+{% endblock %}

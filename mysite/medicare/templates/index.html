@@ -1,0 +1,260 @@
+{% extends 'basic.html' %}
+{% block title %} MediCare | Home {% endblock %}
+
+
+
+{% block body %}
+{% load static %}
+
+
+
+
+<header>
+		<nav class="navbar navbar-expand-lg navbar-light "style="border-bottom:3px solid #ea728c;">
+			<a href="{% url 'index' %}" class="navbar-brand ml-3">Medi<span style="color: #00E8E8;">Care</span></a>
+
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle Navigation">
+				<span class="navbar-toggler-icon"></span>
+
+			</button>
+
+			<div class="collapse navbar-collapse"></div>
+
+			<div class="collapse navbar-collapse" id="navbarMenu">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item active">
+						<a href="{% url 'index' %}" class="nav-link">Home</a>
+					</li>
+
+
+
+          <li><a class="nav-link  dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Services
+        </a>
+
+        <div class="dropdown-menu navs" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item-drop " href="{% url 'doctor' %}">Doctors Info</a>
+            <div class="dropdown-divider"></div>
+          <a class="dropdown-item-drop" href="{% url 'medicine' %}">Medicine Info</a>
+			<div class="dropdown-divider"></div>
+          <a class="dropdown-item-drop" href="{% url 'p' %}">Upload Prescription</a>
+						<div class="dropdown-divider"></div>
+			<a class="dropdown-item-drop" href="{% url 'donner' %}">Upload Blood Dooners</a>
+						<div class="dropdown-divider"></div>
+          <a class="dropdown-item-drop" href="{% url 'pres_show' %}">Prescriptions</a>
+			<div class="dropdown-divider"></div>
+          <a class="dropdown-item-drop " href="{% url 'donnershow' %}">Blood Dooners</a>
+
+        </div>
+      </li>
+
+      <li class="nav-item ">
+            <a href="{% url 'about' %}" class="nav-link js-scroll">About</a>
+          </li>
+
+      <li class="nav-item ">
+            <a href="{% url 'contact' %}" class="nav-link js-scroll">Contact us</a>
+          </li>
+				</ul>
+               {% if user.is_authenticated %}
+
+				<form  action="" method="" class="form-inline my-2 my-lg-0">
+					<button class="btn menu-right-btn border" type="submit">
+						{{request.user}}
+					</button>
+				</form>
+                {% else %}
+                <form  action="/loginuser/" method="get" class="form-inline my-2 my-lg-0">
+					<button class="btn menu-right-btn border" type="submit">
+						Log in
+					</button>
+				</form>
+                {% endif %}
+
+
+
+			</div>
+
+		</nav>
+	</header>
+
+
+
+        {% for message in messages %}
+<div class="alert alert-{{ message.tags }} mb-0 alert-dismissible fade show" role="alert">
+	<strong>Message:</strong> {{ message }} <strong>{{request.user}}</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{% endfor %}
+
+
+
+<main>
+
+    	<section id="home">
+    	<div class="container-fluid p-0">
+    		<div class="site-content">
+    			<div class="d-flex justify-content">
+    			   <div class="d-flex flex-column">
+    				<h1 class="site-title"style="color: #00E8E8 ;margin-top: 65%;">Welcome to,</h1>
+    				<h1 class="title-style">MediCare</h1>
+    				<p class="site-desc"style="color:#ffffff;font-size:20px;">A perfect medical information storing site for you.</p>
+
+                        {% if user.is_authenticated %}
+					   <form  action="/logoutuser/" method="get" class="form">
+    				<div class="d-flex flex-row">
+						<button type="submit"  class="btn site-btn1 px-4 py-3 mr-4 btn-dark">Log out</button>
+						<input type="button" value="{{request.user}}" class="btn site-btn2 px-4 py-3 mr-4 btn-light">
+    				</div>
+					   </form>
+					   {% else %}
+					   <form  action="/loginuser/" method="get" class="form">
+    				<div class="d-flex flex-row">
+						<button type="button" value="Buy Templates" class="btn site-btn1 px-4 py-3 mr-4 btn-dark">Log in</button>
+    				</div>
+					   </form>
+					   {% endif %}
+
+    			  </div>
+    			</div>
+    		</div>
+    	</div>
+
+
+      <div class="block-quick-info-2">
+      <div class="container wide">
+        <div class="block-quick-info-2-inner"style="border: 3px solid #00E8E8;border-radius: 5px;">
+          <div class="row margin">
+            <div class="col-sm-6 col-md-6 col-lg-3 mb-3 mb-lg-0">
+              <div class="d-flex quick-info-2">
+                <span class="icon icon-home mr-3"></span>
+                <div class="text">
+                  <strong class="d-block heading">Visit our Location</strong>
+                  <span class="color">2875  Beechwood Drive</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-3 mb-3 mb-lg-0">
+              <div class="d-flex quick-info-2">
+                <span class="icon icon-envelope mr-3"></span>
+                <div class="text">
+                  <strong class="d-block heading">Send us a message</strong>
+                  <span class="color">info@mysite.com</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-3 mb-3 mb-lg-0">
+              <div class="d-flex quick-info-2">
+                <span class="icon icon-clock-o mr-3"></span>
+                <div class="text">
+                  <strong class="d-block heading">Open for you</strong>
+                  <span class="color">24/7</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    	<div class="section1">
+    		<div class="container text-center">
+    			<h1 class="heading1">Know Our Fantastic Features</h1>
+    		</div>
+    	</div>
+    </section>
+
+
+
+
+
+        <div class="section3">
+        	<div class="container">
+        		<div class="row">
+        		  <div class="col-md-4">
+        			<div class="d-flex flex-row">
+        				<i class=" fas fa-question fa-3x m-2"></i><!--  -->
+        				<div class="d-flex flex-column">
+        					<h3 class="m-2">24/7 Support</h3>
+        					<p class="m-2">You will get 24/7 support from us.</p>
+        				</div>
+        			</div>
+        		</div>
+
+    				<div class="col-md-4">
+        			<div class="d-flex flex-row">
+        				<i class=" fas fa-prescription-bottle fa-3x m-2"></i><!-- fa-question -->
+        				<div class="d-flex flex-column">
+        					<h3 class="m-2">Store Prescription</h3>
+        					<p class="m-2">You can easily store your new and old prescriptions in our site.Which will great helpful for you.</p>
+        				</div>
+        			</div>
+        		</div>
+
+        		  <div class="col-md-4">
+        			<div class="d-flex flex-row">
+        				<i class=" fas fa-hand-holding-medical fa-3x m-2"></i><!--  -->
+        				<div class="d-flex flex-column">
+        					<h3 class="m-2">Add Blood Donner</h3>
+        					<p class="m-2">You Can Make A List of Your Blood Donner's.And Also You Can Store Related Information About Them.</p>
+        				</div>
+        			</div>
+        		</div>
+
+        </div>
+
+
+        <div class="row mt-2">
+        	  <div class="col-md-4">
+        			<div class="d-flex flex-row">
+        				<i class=" fas fa-user-md fa-3x m-2"></i><!--  -->
+        				<div class="d-flex flex-column">
+        					<h3 class="m-2">Know Your Doctor</h3>
+        					<p class="m-2">Know Your doctor before taking any prescription from him/her.You can verify your doctor through our website by giving his/her bmdc registration number.</p>
+        				</div>
+        			</div>
+        		</div>
+
+        		  <div class="col-md-4">
+        			<div class="d-flex flex-row">
+        				<i class=" fas fa-pills fa-3x m-2"></i><!--  -->
+        				<div class="d-flex flex-column">
+        					<h3 class="m-2">Know Your Medicine </h3>
+        					<p class="m-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
+        				</div>
+        			</div>
+        		</div>
+        		  <div class="col-md-4">
+        			<div class="d-flex flex-row">
+        				<i class=" fas fa-sliders-h fa-3x m-2"></i><!--  -->
+        				<div class="d-flex flex-column">
+        					<h3 class="m-2">Customize</h3>
+        					<p class="m-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book</p>
+        				</div>
+        			</div>
+        		</div>
+        </div>
+
+    </div>
+           </div>
+
+
+
+
+
+
+
+
+
+
+    </main>
+
+
+
+
+
+  {% endblock %}
